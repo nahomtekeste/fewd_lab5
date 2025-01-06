@@ -1,0 +1,45 @@
+/* Add this to FoodItem.css or if you are using inline styles/styled-components, update accordingly */
+
+.speaker-rating {
+    font-weight: bold;
+    color: #ff6f61; /* Bright color for the rating, you can customize it */
+    font-size: 1.2rem; /* Larger text size */
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .speaker-rating span {
+    color: #ff6f61;
+  }
+  
+  .speaker-rating .star-icon {
+    color: #f39c12; /* Color for star icon */
+    font-size: 1.4rem; /* Adjust star size */
+  }
+  
+  .interest-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .interest-button button {
+    background-color: #008cba; /* Blue background */
+    color: white; /* Text color */
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .interest-button button:hover {
+    background-color: #005f6a; /* Darker blue on hover */
+  }
+
+  
+
+  
+  

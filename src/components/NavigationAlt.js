@@ -1,30 +1,37 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Outlet } from "react-router-dom";
-import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
+import "./NavigationAlt.css";
 
-const Navigation = () => {
+const NavigationAlt = ({ scrollToWhoWeAre }) => {
   return (
     <>
-      <Navbar bg="light" expand="lg">
-        <Container>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="/" className="nav-item nav-link active">
-                Home
-              </Nav.Link>
-              <Nav.Link href="aboutus" className="nav-item nav-link">
-                About Us
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-
+      <nav className="navigation">
+        <div className="logo">TechCon</div>
+        <ul className="nav-links">
+          <li>
+            <a href="/" onClick={(e) => e.preventDefault()}>Home</a>
+          </li>
+          
+          <li>
+            {/* Add onClick to call scrollToWhoWeAre */}
+            <a href="#whoWeAres" onClick={(e) => { e.preventDefault(); scrollToWhoWeAre(); }}>
+              About Us
+            </a>
+          </li>
+          <li>
+            {/* Add onClick to call scrollToWhoWeAre */}
+            <a href="#conferences-section" onClick={(e) => { e.preventDefault(); scrollToWhoWeAre(); }}>
+              Conference
+            </a>
+          </li>
+          <li>
+            <a href="/#" onClick={(e) => e.preventDefault()}>Sign Up</a>
+          </li>
+        </ul>
+      </nav>
       <Outlet />
     </>
   );
 };
-export default Navigation;
+
+export default NavigationAlt;

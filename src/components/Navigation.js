@@ -1,19 +1,26 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "./NavigationAlt.css";
 
-const Navigation = () => {
+const Navigation = ({ scrollToWhoWeAre }) => {
   return (
-    <>
-      <nav>
-        <Link to="/">
-          Home
-        </Link>
-        <Link to="aboutus">
-          About Us
-        </Link>
-      </nav>
-      <Outlet />
-    </>
+    <nav className="navigation">
+      <div className="logo">TechCon</div>
+      <ul className="nav-links">
+        <li>
+          <Link to="/" onClick={scrollToWhoWeAre}>
+            About Us
+          </Link>
+        </li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/aboutus">People</Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
+
 export default Navigation;

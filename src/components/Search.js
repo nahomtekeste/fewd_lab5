@@ -1,32 +1,37 @@
 import React, { useState } from "react";
 import DisplayFoodItems from "./DisplayFoodItems";
 
-function Search({ details }) {
-   const [searchField, setSearchField] = useState("");
+function Search({ details, onSearchUpdate }) {
+  const [searchField, setSearchField] = useState("");
 
-  const filtered = details.filter((entry) => {
-    return entry.name.toLowerCase().includes(searchField.toLowerCase())|| entry.description.toLowerCase().includes(searchField.toLowerCase());
-  });
+  // Handle search input and pass filtered results to the parent component
+  const handleSearch = (e) => {
+    const value = e.target.value.toLowerCase();
+    setSearchField(value);
 
-  const availableList = filtered.filter((entry) => {
-    return entry.available==="yes";
-  });
- 
+    const filtered = details.filter((entry) => {
+      return (
+        entry.name.toLowerCase().includes(value) || // Search by food name
+        entry.description.toLowerCase().includes(value) || // Search by description
+        (entry.speaker && entry.speaker.toLowerCase().includes(value)) // Search by speaker name
+      );
+    });
+
+    // Send filtered results back to the parent
+    onSearchUpdate(filtered);
+  };
+
   return (
-      <div>
-          <div>
-            <input
-              className="form-control"
-              type="text"
-              placeholder="Search ..."
-              onChange={(e) =>  setSearchField(e.target.value)}
-            />
-          </div>
-          <DisplayFoodItems foodList={availableList} />
-      </div>
-  
+    <div>
+      <input
+        className="form-control"
+        type="text"
+        placeholder="Search by talk name, description, or speaker..."
+        value={searchField}
+        onChange={handleSearch}
+      />
+    </div>
   );
 }
 
 export default Search;
-
